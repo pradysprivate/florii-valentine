@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Baby Flori</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{
+margin:0;
+overflow:auto;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+}
+
+.slide{
+display:none;
+height:100vh;
+width:100vw;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+.yes{background:#ff2d55;color:white}
+.no{background:#444;color:white}
+
+img{
+max-width:250px;
+border-radius:15px;
+margin:10px;
+}
+
+.mem{
+background:rgba(0,0,0,.3);
+padding:20px;
+border-radius:15px;
+}
+
+#noMove{position:absolute}
+
+.heart{
+position:fixed;
+color:pink;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+from{bottom:-10px;opacity:1}
+to{bottom:110%;opacity:0}
+}
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+background:white;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+from{top:-10px}
+to{top:110vh}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="slide active" id="s1">
+<h1>This website is only valid for my baby Flori 💖</h1>
+<button class="yes" onclick="go(2)">I am Flori</button>
+<button class="no" onclick="window.close()">I am gay</button>
+</div>
+
+<div class="slide" id="s2">
+<h2>So my baby Flori you are here 💕</h2>
+<p>Welcome to my memories…<br>Do you want to see what’s in my memories?</p>
+<button class="yes" onclick="go(3)">Yes</button>
+<button class="no" onclick="window.close()">No i am pelotuda</button>
+</div>
+
+<div class="slide" id="s3">
+<div class="mem">
+<p>12 December 2025 – I sent you a Messi reel and you started annoying me ⚽</p>
+<p>31 December 2025 – You were drunk and proposed me 🥹</p>
+<p>21 Jan 2026 – I told you my feelings and a rare diamond came in my life 💎</p>
+<p><i>There are so many memories in my mind… but these are just part of it.</i></p>
+</div>
+<button class="yes" onclick="go(4)">Proceed</button>
+</div>
+
+<div class="slide" id="s4">
+<img src="my_eyes.jpg">
+<h2>Now do you want to see what my eyes are always chasing?</h2>
+<button class="yes" onclick="go(5)">Yes</button>
+<button class="no" onclick="window.close()">No i am lesbian</button>
+</div>
+
+<div class="slide" id="s5">
+<img src="her_eyes.jpg">
+<p>
+तेरे आँखों का ये नूर… उसकी गहराइयों का ये सुरूर,<br>
+बस इनकी ही तलाश है मुझे हर दुआ में 💖
+</p>
+<button class="yes" onclick="go(6)">Proceed</button>
+</div>
+
+<div class="slide" id="s6">
+<h2>Now do you want to see what’s in my heart? ❤️</h2>
+<button class="yes" onclick="go(7)">Yes mi amor</button>
+<button class="no" onclick="window.close()">No i am dumbass</button>
+</div>
+
+<div class="slide" id="s7">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<p>
+चाँद सा रोशन तेरा चेहरा, सूरज सा चमकता है…<br>
+हाय मेरी Flori, तेरी बातों से ही मेरा दिल धड़कता है 💕
+</p>
+<button class="yes" onclick="go(8)">Proceed</button>
+</div>
+
+<div class="slide" id="s8">
+<h1>Will you be my Valentine? 💘</h1>
+<button class="yes" onclick="go(9)">YES</button>
+<button class="no" id="noMove">NO</button>
+</div>
+
+<div class="slide" id="s9">
+<h1>Congratulations mi vida 🌹</h1>
+<p>This rose for my beautiful flower, I love you a lot mi amor ❤️</p>
+</div>
+
+<script>
+const music = document.getElementById("bgm");
+
+function go(n){
+music.play().catch(()=>{});
+document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
+document.getElementById("s"+n).classList.add("active");
+if(n==9)confetti();
+}
+
+let no=document.getElementById("noMove");
+if(no){
+no.addEventListener("mouseover",()=>{
+no.style.left=Math.random()*80+"%";
+no.style.top=Math.random()*80+"%";
+});
+}
+
+function heart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,300);
+
+function confetti(){
+for(let i=0;i<60;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+}
+}
+</script>
+
+</body>
+</html>
